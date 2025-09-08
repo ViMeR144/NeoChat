@@ -277,6 +277,21 @@
       background-position: center center;
       background-repeat: repeat;
     }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      body { overflow: auto; }
+      .layout { grid-template-columns: 60px 1fr; }
+      .layout::before { left: 60px; }
+      .messages-wrap {
+        width: calc(100vw - 24px);
+        height: calc(100vh - 180px);
+        margin: 12px auto;
+      }
+      .composer { padding: 10px 12px; }
+      .composer .bar { width: 100%; }
+      .search-wrap { width: 92vw; height: 78px; }
+    }
   </style>
 </head>
 <body class="container">
@@ -694,6 +709,8 @@
       layoutEl.classList.toggle('collapsed', collapsed);
     }
     applySidebarState();
+    // Force collapsed sidebar on small screens for better mobile UX
+    try { if (window.innerWidth <= 768) { layoutEl.classList.add('collapsed'); } } catch(e) {}
     // Offset floating buttons when sidebar is open to avoid overlap with 'Новый чат'
     function offsetFloatStack() { /* плавающие кнопки скрыли */ }
     offsetFloatStack();
