@@ -292,6 +292,24 @@
       .composer .bar { width: 100%; }
       .search-wrap { width: 92vw; height: 78px; }
     }
+
+    /* Compact phones */
+    @media (max-width: 480px) {
+      .chat-header { padding: 12px 14px; font-size: 16px; }
+      .messages { padding: 12px 12px 140px; }
+      .msg { max-width: 86%; font-size: 14px; }
+      .side-top { grid-template-columns: 36px; grid-template-rows: repeat(3, 40px); gap: 8px; }
+      #themeToggleBtn { display: none; }
+      #newChatBtnSidebar { grid-column: 1; grid-row: 2; }
+      .layout.collapsed #newChatBtnSidebar { width: 36px; }
+      .side-bottom { padding: 8px; }
+      .side-bottom .popup-window { left: calc(100% + 6px); transform: translateY(calc(-50% - 8px)) scale(.96); }
+      .messages-wrap { height: calc(100vh - 150px); }
+      .composer { padding-bottom: calc(10px + env(safe-area-inset-bottom)); }
+      .composer .bar { gap: 8px; }
+      .composer input[type=text] { font-size: 14px; }
+      .composer .send { width: 36px; height: 36px; }
+    }
   </style>
 </head>
 <body class="container">
@@ -720,7 +738,6 @@
       try { localStorage.setItem('sidebarCollapsed', collapsed ? '1' : '0'); } catch(e) {}
       offsetFloatStack();
     });
-
     // Mini dock actions (when sidebar collapsed)
     const miniDock = document.getElementById('miniDock');
     const miniProfile = document.getElementById('miniProfile');
